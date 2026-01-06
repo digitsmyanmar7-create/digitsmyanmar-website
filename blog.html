@@ -33,7 +33,7 @@
             line-height: 1.6;
         }
 
-        /* Fixed Header */
+        /* Fixed Header - ALIGNED WITH SUPPORT PAGE */
         header {
             position: fixed;
             top: 0;
@@ -41,39 +41,62 @@
             width: 100%;
             background: var(--dark-bg);
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(36, 41, 46, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
+            color: white;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
         .logo span {
             color: var(--primary-red);
         }
 
+        .logo-img {
+            height: 35px;
+            width: 35px;
+            object-fit: contain;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 30px;
         }
 
         nav a {
             color: var(--white);
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 5px 0;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 8px 0;
             position: relative;
+            font-size: 1rem;
         }
 
         nav a::after {
@@ -82,7 +105,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: var(--primary-red);
             transition: width 0.3s ease;
         }
@@ -91,14 +114,35 @@
             color: var(--primary-light);
         }
 
-        nav a:hover::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
+        }
+
+        nav a.active {
+            color: var(--primary-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-red);
         }
 
         .search-icon {
             font-size: 1.2rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            margin-left: 20px;
         }
 
         .search-icon:hover {
@@ -112,6 +156,64 @@
             padding: 0 20px;
         }
 
+        /* Add padding-top to account for fixed header */
+        main {
+            padding-top: 100px;
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                height: 100vh;
+                background: var(--dark-bg);
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+                transition: all 0.4s ease;
+                padding: 100px 40px 40px;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 12px 0;
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-icon {
+                margin-left: 15px;
+                font-size: 1.3rem;
+            }
+            
+            main {
+                margin-top: 80px;
+            }
+        }
+
+        /* Rest of your existing CSS remains the same below... */
         .page-title {
             text-align: center;
             margin-bottom: 2rem;
@@ -496,16 +598,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            nav ul {
-                margin-top: 1rem;
-                gap: 1.5rem;
-            }
-
             .posts-container {
                 grid-template-columns: 1fr;
             }
@@ -597,6 +689,30 @@
         .post-category.strategy {
             background: #f72585;
         }
+
+        .post-category.ecommerce {
+            background: #38b000;
+        }
+
+        .post-category.influencer {
+            background: #ff9e00;
+        }
+
+        .post-category.video {
+            background: #ef233c;
+        }
+
+        .post-category.mobile {
+            background: #560bad;
+        }
+
+        .post-category.email {
+            background: #3a86ff;
+        }
+
+        .post-category.tools {
+            background: #8338ec;
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6PJ2ZXYDX"></script>
@@ -609,28 +725,30 @@
 </head>
 
 <body>
-    <!-- Fixed Header -->
+    <!-- Fixed Header - ALIGNED WITH SUPPORT PAGE -->
     <header>
-        <div class="logo">
-            <i class="fas fa-bullhorn"></i>
-            <span>Digits</span>Myanmar Blog
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <!-- <li><a href="#digital-marketing">Digital Marketing</a></li>
-                <li><a href="#seo">SEO</a></li>
-                <li><a href="#social-media">Social Media</a></li>
-                <li><a href="#contact">Contact</a></li> -->
-                <li><a href="#">News & Blog</a></li>
-                <li><a href="support.html">Support</a></li>
-
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="search-icon">
-            <i class="fas fa-search"></i>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/DM Logo + circle back(31.7.2023).png" alt="Digits Myanmar Logo" class="logo-img">
+                <span>Digits</span>Myanmar Blog
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html" class="active">News & Blog</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -641,7 +759,8 @@
             <p>Latest trends, strategies, and tips from the Digital Marketing Association of Myanmar</p>
         </div>
 
-        <!--  <div class="filters">
+        <!-- Filters (optional, can be uncommented if needed) -->
+        <!-- <div class="filters">
             <div class="filter-btn active">All Posts</div>
             <div class="filter-btn">SEO</div>
             <div class="filter-btn">Social Media</div>
@@ -795,7 +914,7 @@
                 <div class="post-image">
                     <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
                         alt="E-commerce">
-                    <div class="post-category digital-marketing">E-commerce</div>
+                    <div class="post-category ecommerce">E-commerce</div>
                 </div>
                 <div class="post-content">
                     <div class="post-date"><i class="far fa-calendar"></i> May 20, 2023</div>
@@ -818,7 +937,7 @@
                 <div class="post-image">
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                         alt="Influencer Marketing">
-                    <div class="post-category social-media">Influencer Marketing</div>
+                    <div class="post-category influencer">Influencer Marketing</div>
                 </div>
                 <div class="post-content">
                     <div class="post-date"><i class="far fa-calendar"></i> May 15, 2023</div>
@@ -841,7 +960,7 @@
                 <div class="post-image">
                     <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                         alt="Video Marketing">
-                    <div class="post-category content">Video Marketing</div>
+                    <div class="post-category video">Video Marketing</div>
                 </div>
                 <div class="post-content">
                     <div class="post-date"><i class="far fa-calendar"></i> May 10, 2023</div>
@@ -887,7 +1006,7 @@
                 <div class="post-image">
                     <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1164&q=80"
                         alt="Email Marketing">
-                    <div class="post-category digital-marketing">Email Marketing</div>
+                    <div class="post-category email">Email Marketing</div>
                 </div>
                 <div class="post-content">
                     <div class="post-date"><i class="far fa-calendar"></i> April 28, 2023</div>
@@ -910,7 +1029,7 @@
                 <div class="post-image">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                         alt="Marketing Tools">
-                    <div class="post-category analytics">Tools</div>
+                    <div class="post-category tools">Tools</div>
                 </div>
                 <div class="post-content">
                     <div class="post-date"><i class="far fa-calendar"></i> April 22, 2023</div>
@@ -929,6 +1048,16 @@
             </article>
         </div>
 
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+            <h2>Stay Updated with Digital Marketing Trends</h2>
+            <p>Subscribe to our newsletter for weekly insights, tips, and industry news directly to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
         <!-- Pagination -->
         <div class="pagination">
             <a href="#" class="active">1</a>
@@ -936,4 +1065,134 @@
             <a href="#">3</a>
             <a href="#">4</a>
             <a href="#">5</a>
-            <a href="#"><i class="fas
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 Digits Myanmar. All rights reserved. | Digital Marketing Association of Myanmar</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const body = document.body;
+        
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            // Toggle body scrolling
+            body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                body.style.overflow = 'auto';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Back to top button visibility
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Search functionality
+        const searchIcon = document.querySelector('.search-icon');
+        searchIcon.addEventListener('click', () => {
+            const searchTerm = prompt('Search blog posts:');
+            if (searchTerm) {
+                alert(`Searching for: "${searchTerm}"\n\nIn a real implementation, this would filter blog posts.`);
+                // You can add actual search functionality here
+            }
+        });
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const email = emailInput.value;
+            
+            if (email) {
+                alert(`Thank you for subscribing with: ${email}\n\nYou'll receive our weekly newsletter soon!`);
+                emailInput.value = '';
+            }
+        });
+        
+        // Filter buttons functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // In a real implementation, this would filter posts by category
+                // For now, we'll just show an alert
+                const category = btn.textContent;
+                alert(`Filtering posts by: ${category}\n\nIn a real implementation, this would show ${category} posts.`);
+            });
+        });
+        
+        // Smooth scrolling for back to top
+        document.getElementById('backToTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Post card click animation
+        const postCards = document.querySelectorAll('.post-card');
+        postCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.read-more')) {
+                    const title = card.querySelector('.post-title').textContent;
+                    alert(`Opening blog post: "${title}"\n\nIn a real implementation, this would navigate to the full article.`);
+                }
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const yearSpan = document.querySelector('footer p');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
+            }
+        });
+    </script>
+</body>
+</html>
