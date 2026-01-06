@@ -133,11 +133,21 @@
             font-weight: 700;
             color: white;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+
         .logo span {
-            color: var(--accent);
+            color: var(--primary-red);
         }
+
+        .logo-img {
+            height: 35px;
+            width: 35px;
+            object-fit: contain;
+        }
+
         
         nav ul {
             display: flex;
@@ -783,7 +793,9 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo"><span>Digits</span>Myanmar Support</a>
+            <a href="index.html" class="logo">
+        <img src="images/DM Logo + circle back(31.7.2023).png" alt="Digits Myanmar Logo" class="logo-img">   
+            <span>Digits</span>Myanmar Support</a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
