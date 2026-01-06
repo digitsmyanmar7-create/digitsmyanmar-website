@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digits Myanmar - Blog</title>
+    <link rel="icon" type="image/x-icon" href="images/DM Logo + circle back(31.7.2023).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -33,7 +34,82 @@
             line-height: 1.6;
         }
 
-        /* Fixed Header - ALIGNED WITH SUPPORT PAGE */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(242, 7, 7, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-red);
+            color: white;
+            box-shadow: 0 5px 15px rgba(242, 7, 7, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* Fixed Header - ALIGNED WITH OTHER PAGES */
         header {
             position: fixed;
             top: 0;
@@ -138,96 +214,120 @@
             color: var(--primary-red);
         }
 
-        .search-icon {
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            margin-left: 20px;
+        /* Hero Section - REVISED TO MATCH SUPPORT PAGE */
+        .blog-hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(rgba(36, 41, 46, 0.92), rgba(36, 41, 46, 0.92)), url('images/Untitled.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
         }
 
-        .search-icon:hover {
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .blog-hero h1 span {
             color: var(--primary-red);
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         /* Main Content */
         main {
             max-width: 1200px;
-            margin: 100px auto 40px;
+            margin: 0 auto 40px;
             padding: 0 20px;
         }
 
-        /* Add padding-top to account for fixed header */
-        main {
-            padding-top: 100px;
-        }
-
-        /* Mobile menu styles */
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 0 15px;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 85%;
-                height: 100vh;
-                background: var(--dark-bg);
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
-                transition: all 0.4s ease;
-                padding: 100px 40px 40px;
-                z-index: 999;
-            }
-            
-            nav.active {
-                left: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            nav ul li {
-                margin: 0;
-            }
-            
-            nav ul li a {
-                font-size: 1.2rem;
-                padding: 12px 0;
-                display: block;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .search-icon {
-                margin-left: 15px;
-                font-size: 1.3rem;
-            }
-            
-            main {
-                margin-top: 80px;
-            }
-        }
-
-        /* Rest of your existing CSS remains the same below... */
+        /* Page Title Section */
         .page-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin: 3rem 0;
             color: var(--dark-bg);
         }
 
-        .page-title h1 {
+        .page-title h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
 
-        .page-title h1::after {
+        .page-title h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -243,9 +343,95 @@
             color: var(--text-secondary);
             font-size: 1.1rem;
             margin-top: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Filters */
+        /* Quick Help Section - MATCHING SUPPORT PAGE DIVIDER */
+        .quick-help {
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .quick-help::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-light));
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                height: 100vh;
+                background: var(--dark-bg);
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+                transition: all 0.4s ease;
+                padding: 100px 40px 40px;
+                z-index: 999;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul li {
+                margin: 0;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 12px 0;
+                display: block;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .blog-hero {
+                padding: 130px 0 80px;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Rest of your existing CSS remains the same below... */
         .filters {
             display: flex;
             justify-content: center;
@@ -602,10 +788,6 @@
                 grid-template-columns: 1fr;
             }
 
-            main {
-                margin-top: 140px;
-            }
-
             .newsletter-form {
                 flex-direction: column;
                 gap: 1rem;
@@ -617,7 +799,7 @@
                 width: 100%;
             }
 
-            .page-title h1 {
+            .page-title h2 {
                 font-size: 2rem;
             }
         }
@@ -646,6 +828,24 @@
                 width: 45px;
                 height: 45px;
             }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         /* Animation for cards */
@@ -663,6 +863,27 @@
 
         .post-card {
             animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content,
+        .help-card,
+        .contact-card,
+        .faq-item,
+        .hours-container {
+            animation: fadeInUp 0.6s ease-out;
         }
 
         /* Category-specific colors */
@@ -725,46 +946,86 @@
 </head>
 
 <body>
-    <!-- Fixed Header - ALIGNED WITH SUPPORT PAGE -->
-    <!-- Header -->
+    <!-- Fixed Header - ALIGNED WITH OTHER PAGES -->
     <header>
-        <div class="container header-container">
+        <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/DM Logo + circle back(31.7.2023).png" alt="Digits Myanmar Logo" class="logo-img">
-                <span>Blog</span> </a>
+                <span>Blog</span>
+            </a>
+
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">News & Blog Post</a></li>
+                    <li><a href="blog.html" class="active">News & Blog</a></li>
                     <li><a href="support.html">Support</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section - REVISED TO MATCH SUPPORT PAGE -->
+    <section class="blog-hero">
+        <div class="container hero-content">
+            <h1>Digital Marketing <span>Insights</span> & Trends</h1>
+            <p>Stay ahead with the latest strategies, tools, and expert analysis from Myanmar's leading digital
+                marketing community. Your source for actionable insights that drive results.</p>
+
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search blog posts, articles, and resources...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150">150+</div>
+                    <div class="stat-label">Expert Articles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="12">12+</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">50+</div>
+                    <div class="stat-label">Industry Experts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="10000">10K+</div>
+                    <div class="stat-label">Monthly Readers</div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Quick Help Section - ADDED TO MATCH SUPPORT PAGE STRUCTURE -->
+    <section class="quick-help">
+        <div class="container">
+            <!-- <div class="section-title">
+                <h2>Browse by Category</h2>
+                <p>Explore our comprehensive collection of digital marketing articles organized by topic</p>
+            </div>
+
+            <div class="filters">
+                <div class="filter-btn active">All Posts</div>
+                <div class="filter-btn">SEO</div>
+                <div class="filter-btn">Social Media</div>
+                <div class="filter-btn">Content Marketing</div>
+                <div class="filter-btn">Analytics</div>
+                <div class="filter-btn">Strategy</div>
+                <div class="filter-btn">Mobile Marketing</div>
+                <div class="filter-btn">E-commerce</div>
+            </div>
+        </div> -->
+    </section>
+
     <!-- Main Content -->
     <main>
-        <div class="page-title">
-            <h1>Digital Marketing Insights</h1>
-            <p>Latest trends, strategies, and tips from the Digital Marketing Association of Myanmar</p>
-        </div>
-
-        <!-- Filters (optional, can be uncommented if needed) -->
-        <!-- <div class="filters">
-            <div class="filter-btn active">All Posts</div>
-            <div class="filter-btn">SEO</div>
-            <div class="filter-btn">Social Media</div>
-            <div class="filter-btn">Content Marketing</div>
-            <div class="filter-btn">Analytics</div>
-            <div class="filter-btn">Strategy</div>
-            <div class="filter-btn">Mobile Marketing</div>
-        </div> -->
-
         <div class="posts-container">
             <!-- Post 1 -->
             <article class="post-card">
@@ -949,107 +1210,16 @@
                     </div>
                 </div>
             </article>
-
-            <!-- Post 9 -->
-            <article class="post-card">
-                <div class="post-image">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                        alt="Video Marketing">
-                    <div class="post-category video">Video Marketing</div>
-                </div>
-                <div class="post-content">
-                    <div class="post-date"><i class="far fa-calendar"></i> May 10, 2023</div>
-                    <h2 class="post-title">Video Content Strategy for Myanmar Market</h2>
-                    <p class="post-excerpt">Learn how to create engaging video content that captures the attention of
-                        Myanmar audiences across various platforms.</p>
-                    <div class="post-meta">
-                        <div class="post-author">
-                            <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Author"
-                                class="author-avatar">
-                            <span class="author-name">Ko Win</span>
-                        </div>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Post 10 -->
-            <article class="post-card">
-                <div class="post-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                        alt="Mobile Apps">
-                    <div class="post-category mobile">Mobile Marketing</div>
-                </div>
-                <div class="post-content">
-                    <div class="post-date"><i class="far fa-calendar"></i> May 5, 2023</div>
-                    <h2 class="post-title">Mobile-First Marketing for Myanmar Consumers</h2>
-                    <p class="post-excerpt">Strategies for optimizing your digital marketing efforts for Myanmar's
-                        mobile-first consumers and their unique usage patterns.</p>
-                    <div class="post-meta">
-                        <div class="post-author">
-                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Author"
-                                class="author-avatar">
-                            <span class="author-name">Daw May</span>
-                        </div>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Post 11 -->
-            <article class="post-card">
-                <div class="post-image">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1164&q=80"
-                        alt="Email Marketing">
-                    <div class="post-category email">Email Marketing</div>
-                </div>
-                <div class="post-content">
-                    <div class="post-date"><i class="far fa-calendar"></i> April 28, 2023</div>
-                    <h2 class="post-title">Effective Email Marketing Campaigns in Myanmar</h2>
-                    <p class="post-excerpt">Best practices for creating email marketing campaigns that engage Myanmar
-                        audiences and drive conversions.</p>
-                    <div class="post-meta">
-                        <div class="post-author">
-                            <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Author"
-                                class="author-avatar">
-                            <span class="author-name">Ko Than</span>
-                        </div>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Post 12 -->
-            <article class="post-card">
-                <div class="post-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                        alt="Marketing Tools">
-                    <div class="post-category tools">Tools</div>
-                </div>
-                <div class="post-content">
-                    <div class="post-date"><i class="far fa-calendar"></i> April 22, 2023</div>
-                    <h2 class="post-title">Essential Digital Marketing Tools for Myanmar Marketers</h2>
-                    <p class="post-excerpt">A curated list of must-have tools and software for digital marketers
-                        operating in the Myanmar market.</p>
-                    <div class="post-meta">
-                        <div class="post-author">
-                            <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Author"
-                                class="author-avatar">
-                            <span class="author-name">Daw Ei</span>
-                        </div>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
         </div>
 
         <!-- Newsletter Section -->
         <div class="newsletter">
-            <h2>Stay Updated with Digital Marketing Trends</h2>
-            <p>Subscribe to our newsletter for weekly insights, tips, and industry news directly to your inbox</p>
+            <h2>Never Miss an Update</h2>
+            <p>Join 5,000+ digital marketers who receive our weekly newsletter with exclusive content, industry news,
+                and expert insights</p>
             <form class="newsletter-form">
                 <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
+                <button type="submit">Subscribe Now</button>
             </form>
         </div>
 
@@ -1086,16 +1256,16 @@
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
         const body = document.body;
-        
+
         menuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
-            menuBtn.innerHTML = nav.classList.contains('active') ? 
+            menuBtn.innerHTML = nav.classList.contains('active') ?
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            
+
             // Toggle body scrolling
             body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
-        
+
         // Close mobile menu when clicking on links
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1104,7 +1274,7 @@
                 body.style.overflow = 'auto';
             });
         });
-        
+
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
@@ -1113,7 +1283,7 @@
             } else {
                 header.classList.remove('scrolled');
             }
-            
+
             // Back to top button visibility
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 300) {
@@ -1122,44 +1292,54 @@
                 backToTop.classList.remove('visible');
             }
         });
-        
+
         // Search functionality
-        const searchIcon = document.querySelector('.search-icon');
-        searchIcon.addEventListener('click', () => {
-            const searchTerm = prompt('Search blog posts:');
-            if (searchTerm) {
-                alert(`Searching for: "${searchTerm}"\n\nIn a real implementation, this would filter blog posts.`);
-                // You can add actual search functionality here
+        const searchBox = document.querySelector('.search-box');
+        const searchBtn = document.querySelector('.search-btn');
+
+        searchBtn.addEventListener('click', performSearch);
+        searchBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
             }
         });
-        
+
+        function performSearch() {
+            const query = searchBox.value.trim();
+            if (query) {
+                alert(`Searching for: "${query}"\n\nIn a real implementation, this would search blog posts and articles.`);
+                // In a real implementation, you would filter or redirect to search results
+            }
+        }
+
         // Newsletter form submission
         const newsletterForm = document.querySelector('.newsletter-form');
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = newsletterForm.querySelector('input[type="email"]');
             const email = emailInput.value;
-            
+
             if (email) {
                 alert(`Thank you for subscribing with: ${email}\n\nYou'll receive our weekly newsletter soon!`);
                 emailInput.value = '';
             }
         });
-        
+
         // Filter buttons functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
-                // In a real implementation, this would filter posts by category
-                // For now, we'll just show an alert
+
                 const category = btn.textContent;
-                alert(`Filtering posts by: ${category}\n\nIn a real implementation, this would show ${category} posts.`);
+                // In a real implementation, this would filter posts by category
+                if (category !== 'All Posts') {
+                    alert(`Filtering posts by: ${category}\n\nIn a real implementation, this would show ${category} posts.`);
+                }
             });
         });
-        
+
         // Smooth scrolling for back to top
         document.getElementById('backToTop').addEventListener('click', (e) => {
             e.preventDefault();
@@ -1168,18 +1348,66 @@
                 behavior: 'smooth'
             });
         });
-        
-        // Post card click animation
-        const postCards = document.querySelectorAll('.post-card');
-        postCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (!e.target.closest('.read-more')) {
-                    const title = card.querySelector('.post-title').textContent;
-                    alert(`Opening blog post: "${title}"\n\nIn a real implementation, this would navigate to the full article.`);
+
+        // Animate hero stats counters
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target;
+                    const target = parseInt(statNumber.getAttribute('data-count'));
+                    const increment = target / 50;
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            statNumber.textContent = Math.ceil(current) + '+';
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            statNumber.textContent = target + '+';
+                        }
+                    };
+
+                    updateCounter();
+                    statsObserver.unobserve(statNumber);
                 }
             });
+        }, observerOptions);
+
+        statNumbers.forEach(stat => {
+            statsObserver.observe(stat);
         });
-        
+
+        // Add scroll animations
+        const observerOptions2 = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions2);
+
+        // Observe elements for animation
+        document.querySelectorAll('.post-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
@@ -1187,7 +1415,17 @@
             if (yearSpan) {
                 yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
             }
+
+            // Set active navigation based on current page
+            const currentPage = 'blog.html';
+            document.querySelectorAll('nav a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
+
 </html>
